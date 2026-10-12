@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{% if page.title and page.title != site.title %}{{ page.title }} · {% endif %}{{ site.title }}</title>
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#F6F0E9" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#15100D" media="(prefers-color-scheme: dark)" />
+    <link rel="icon" href="{{ '/assets/favicon.svg' | relative_url }}" type="image/svg+xml" />
+    <link rel="icon" href="{{ '/assets/favicon-32.png' | relative_url }}" sizes="32x32" type="image/png" />
+    <link rel="apple-touch-icon" href="{{ '/assets/apple-touch-icon.png' | relative_url }}" />
+    <style>
+      /* Same palettes as the app (src/theme.tsx). */
+      :root {
+        --bg: #f6f0e9;
+        --surface: #ffffff;
+        --border: #e3d6c8;
+        --text: #2a1d15;
+        --muted: #76614f;
+        --faint: #a8978a;
+        --accent: #b06c26;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --bg: #15100d;
+          --surface: #211915;
+          --border: #3b2f27;
+          --text: #f4eae0;
+          --muted: #a69385;
+          --faint: #6f6056;
+          --accent: #e3a65a;
+        }
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--text);
+        font: 16px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+      }
+      .wrap { max-width: 720px; margin: 0 auto; padding: 24px 16px 48px; }
+      header { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; }
+      header img { width: 44px; height: 44px; border-radius: 12px; }
+      header a.brand { color: var(--text); text-decoration: none; font-weight: 700; font-size: 1.35rem; }
+      nav { margin-left: auto; display: flex; gap: 16px; font-size: 0.95rem; }
+      nav a { color: var(--muted); text-decoration: none; }
+      nav a:hover, nav a[aria-current="page"] { color: var(--accent); }
+      main {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        padding: 8px 24px 20px;
+      }
+      h1, h2, h3 { line-height: 1.25; }
+      h1 { font-size: 1.6rem; margin: 16px 0 8px; }
+      h2 { font-size: 1.15rem; margin-top: 28px; }
+      em { color: var(--muted); }
+      a { color: var(--accent); }
+      code { background: var(--bg); border: 1px solid var(--border); border-radius: 6px; padding: 1px 5px; font-size: 0.9em; }
+      footer { margin-top: 20px; color: var(--faint); font-size: 0.85rem; text-align: center; }
+      @media (max-width: 480px) {
+        header { flex-wrap: wrap; }
+        nav { margin-left: 0; width: 100%; }
+        main { padding: 4px 16px 16px; }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <header>
+        <img src="{{ '/assets/logo-64.png' | relative_url }}" alt="" />
+        <a class="brand" href="{{ '/' | relative_url }}">{{ site.title }}</a>
+        <nav>
+          <a href="{{ '/privacy.html' | relative_url }}" {% if page.url == '/privacy.html' %}aria-current="page"{% endif %}>Privacy</a>
+          <a href="{{ '/terms.html' | relative_url }}" {% if page.url == '/terms.html' %}aria-current="page"{% endif %}>Terms</a>
+        </nav>
+      </header>
+      <main>
+        {{ content }}
+      </main>
+      <footer>Contact: <a href="mailto:dev@nauzilus.net">dev@nauzilus.net</a></footer>
+    </div>
+  </body>
+</html>

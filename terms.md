@@ -9,5 +9,3 @@ arising from its use. Keep your own backups (Export CSV or Google Drive backup).
 By connecting Google Drive you also agree to Google's terms for your Google account.
 
 These terms may change; the current version is always at this address.
-
-Contact: [dev@nauzilus.net](mailto:dev@nauzilus.net)
