@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>{% if page.title and page.title != site.title %}{{ page.title }} · {% endif %}{{ site.title }}</title>
+    <title>{{ page.title | default: site.title }}</title>
     <meta name="color-scheme" content="light dark" />
     <meta name="theme-color" content="#F6F0E9" media="(prefers-color-scheme: light)" />
     <meta name="theme-color" content="#15100D" media="(prefers-color-scheme: dark)" />
